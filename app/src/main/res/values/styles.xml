@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="TextViewActivityMainStyle" parent="TextAppearance.AppCompat.Display1">
+        <item name="android:textStyle">italic</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textColor">@color/purple_700</item>
+        <item name="android:textSize">@dimen/text_view_main_activity_text_size</item>
+        <item name="android:layout_marginTop">@dimen/text_view_main_activity_margin_top</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="ButtonActivityMainStyle" parent="TextAppearance.AppCompat.Display1">
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">casual</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/button_main_activity_text_size</item>
+        <item name="android:layout_marginTop">@dimen/button_main_activity_margin_top</item>
+        <item name="android:backgroundTint">@color/teal_700</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+</resources>

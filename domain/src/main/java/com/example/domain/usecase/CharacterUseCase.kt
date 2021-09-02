@@ -1,15 +1,15 @@
 package com.example.domain.usecase
 
-import com.example.domain.entity.CharacterDataWrapperEntity
+import com.example.domain.entity.CharacterDataWrapperData
 import com.example.domain.repository.CharacterRepository
 import com.example.domain.utils.Result
 
 interface CharacterUseCase {
 
-    operator fun invoke(): Result<CharacterDataWrapperEntity>
+    operator fun invoke(): Result<CharacterDataWrapperData>
 }
 
 class CharacterUseCaseImpl(private val characterRepository: CharacterRepository) : CharacterUseCase {
 
-    override operator fun invoke(): Result<CharacterDataWrapperEntity> = characterRepository.getInformationApi()
+    override operator fun invoke(): Result<CharacterDataWrapperData> = characterRepository.getInformationApi()
 }

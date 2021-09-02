@@ -1,6 +1,6 @@
 package com.example.data.response
 
-import com.example.data.utils.ConstantUtils
+import com.example.domain.utils.ConstantUtils
 import com.google.gson.annotations.SerializedName
 
 data class SeriesListResponse(

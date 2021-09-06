@@ -3,14 +3,14 @@ package com.example.cleanarchitecture.activity
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import com.example.cleanarchitecture.R
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.cleanarchitecture.adapter.CharacterAdapter
 import com.example.cleanarchitecture.databinding.ActivityMainBinding
 import com.example.cleanarchitecture.utils.Event
 import com.example.cleanarchitecture.utils.toast
 import com.example.cleanarchitecture.viewmodel.CharacterViewModel
 import com.example.cleanarchitecture.viewmodel.Data
 import com.example.cleanarchitecture.viewmodel.Status
-import com.example.domain.entity.CharacterDataWrapperEntity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
@@ -25,21 +25,32 @@ class MainActivity : AppCompatActivity() {
 
         viewModel.liveDataState.observe(this, { updateUI(it) })
 
-        binding.buttonMainActivityIdFetch.setOnClickListener { viewModel.onFetchCharactersClicked() }
+        viewModel.fetchCharacters()
     }
 
-    private fun updateUI(characterData: Event<Data<CharacterDataWrapperEntity>>?) {
-        when (characterData?.peekContent()?.responseType) {
+    private fun updateUI(characterData: Event<Data>) {
+        val eventContent = characterData.getContentIfNotHandled()
+        when (eventContent?.responseType) {
             Status.SUCCESSFUL -> {
                 binding.progressBarMainActivityDataLoad.visibility = View.GONE
-                toast(getString(R.string.toast_main_activity_characters, characterData.peekContent().data?.data?.total))
+                binding.recyclerViewCharactersRecyclerActivityList.layoutManager =
+                    LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+                binding.recyclerViewCharactersRecyclerActivityList.adapter = eventContent.data.data.results.let {
+                    CharacterAdapter(
+                        it
+                    )
+                }
             }
             Status.ERROR -> {
                 binding.progressBarMainActivityDataLoad.visibility = View.GONE
-                toast(characterData.peekContent().error.toString())
+                toast(eventContent.error)
             }
             Status.LOADING -> {
                 binding.progressBarMainActivityDataLoad.visibility = View.VISIBLE
+            }
+            Status.EMPTY_LIST -> {
+                binding.progressBarMainActivityDataLoad.visibility = View.GONE
+                toast(eventContent.error)
             }
         }
     }

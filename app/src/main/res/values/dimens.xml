@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="text_view_main_activity_text_size">43sp</dimen>
-    <dimen name="text_view_main_activity_margin_top">85dp</dimen>
-    <dimen name="button_main_activity_text_size">20sp</dimen>
-    <dimen name="button_main_activity_margin_top">100dp</dimen>
+    <dimen name="text_view_main_activity_text_size">50sp</dimen>
+    <dimen name="text_view_main_activity_margin_top">50dp</dimen>
+    <dimen name="recycler_view_main_activity_margin_top">10dp</dimen>
+    <dimen name="recycler_view_main_activity_margin_horizontal">20dp</dimen>
+    <dimen name="recycler_view_main_activity_margin_bottom">10dp</dimen>
+
+    <dimen name="constraint_layout_item_recycler_view_margin_horizontal">5dp</dimen>
+    <dimen name="constraint_layout_item_recycler_view_margin_top">5dp</dimen>
+    <dimen name="text_view_item_recycler_view_size">20sp</dimen>
+    <dimen name="text_view_item_recycler_view_width">0dp</dimen>
+    <dimen name="text_view_item_recycler_view_margin_end">10dp</dimen>
+    <dimen name="image_view_item_recycler_view_width">60dp</dimen>
+    <dimen name="image_view_item_recycler_view_height">60dp</dimen>
+    <dimen name="image_view_item_recycler_view_margin_end">20dp</dimen>
 </resources>

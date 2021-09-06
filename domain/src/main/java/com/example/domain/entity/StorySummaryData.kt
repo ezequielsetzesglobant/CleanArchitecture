@@ -1,13 +1,9 @@
-package com.example.data.response
+package com.example.domain.entity
 
 import com.example.domain.utils.ConstantUtils
-import com.google.gson.annotations.SerializedName
 
-data class StorySummaryResponse(
-    @SerializedName("resourceURI")
+data class StorySummaryData(
     val resourceURI: String = ConstantUtils.STRING_DEFAULT,
-    @SerializedName("name")
     val name: String = ConstantUtils.STRING_DEFAULT,
-    @SerializedName("type")
     val type: String = ConstantUtils.STRING_DEFAULT,
 )

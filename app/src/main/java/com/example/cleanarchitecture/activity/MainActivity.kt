@@ -3,9 +3,11 @@ package com.example.cleanarchitecture.activity
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cleanarchitecture.adapter.CharacterAdapter
 import com.example.cleanarchitecture.databinding.ActivityMainBinding
+import com.example.cleanarchitecture.fragment.CharacterInformationFragment
 import com.example.cleanarchitecture.utils.Event
 import com.example.cleanarchitecture.utils.toast
 import com.example.cleanarchitecture.viewmodel.CharacterViewModel
@@ -13,8 +15,9 @@ import com.example.cleanarchitecture.viewmodel.Data
 import com.example.cleanarchitecture.viewmodel.Status
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), CharacterAdapter.OnCharacterListener {
 
+    private lateinit var adapter: CharacterAdapter
     private lateinit var binding: ActivityMainBinding
     private val viewModel by viewModel<CharacterViewModel>()
 
@@ -23,22 +26,27 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        viewModel.liveDataState.observe(this, { updateUI(it) })
+        viewModel.getLiveDataState().observe(this, updateUIObserver)
 
         viewModel.fetchCharacters()
+
+        initializeRecyclerView()
     }
 
-    private fun updateUI(characterData: Event<Data>) {
-        val eventContent = characterData.getContentIfNotHandled()
+    private fun initializeRecyclerView() {
+        binding.recyclerViewCharactersRecyclerActivityList.layoutManager =
+            LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        adapter = CharacterAdapter(emptyList(), this)
+        binding.recyclerViewCharactersRecyclerActivityList.adapter = adapter
+    }
+
+    private val updateUIObserver = Observer<Event<Data>> { event ->
+        val eventContent = event.getContentIfNotHandled()
         when (eventContent?.responseType) {
             Status.SUCCESSFUL -> {
                 binding.progressBarMainActivityDataLoad.visibility = View.GONE
-                binding.recyclerViewCharactersRecyclerActivityList.layoutManager =
-                    LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-                binding.recyclerViewCharactersRecyclerActivityList.adapter = eventContent.data.data.results.let {
-                    CharacterAdapter(
-                        it
-                    )
+                eventContent.data.data.results.let {
+                    adapter.setCharacters(it)
                 }
             }
             Status.ERROR -> {
@@ -53,5 +61,13 @@ class MainActivity : AppCompatActivity() {
                 toast(eventContent.error)
             }
         }
+    }
+
+    override fun onCharacterClick(position: Int) {
+        CharacterInformationFragment.newInstance(adapter.getCharacter(position)).show(supportFragmentManager, TAG)
+    }
+
+    companion object {
+        private const val TAG: String = "CHARACTER_INFORMATION_FRAGMENT"
     }
 }

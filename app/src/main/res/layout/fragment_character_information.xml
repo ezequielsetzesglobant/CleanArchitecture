@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_fragment_character_information"
+    tools:context=".fragment.CharacterInformationFragment">
+
+    <Button
+        android:id="@+id/button_fragment_close"
+        android:layout_width="@dimen/button_fragment_width"
+        android:layout_height="@dimen/button_fragment_height"
+        android:foreground="@drawable/foreground_button_fragment"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/text_view_fragment_title"
+        style="@style/TextViewFragmentStyleTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/text_view_fragment_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_fragment_close" />
+
+    <ImageView
+        android:id="@+id/image_view_fragment_icon"
+        android:layout_width="@dimen/image_view_fragment_width"
+        android:layout_height="@dimen/image_view_fragment_height"
+        android:paddingStart="@dimen/image_view_fragment_padding_start"
+        app:layout_constraintBottom_toTopOf="@id/recycler_view_fragment_comics"
+        app:layout_constraintEnd_toStartOf="@id/text_view_fragment_description"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_view_fragment_title" />
+
+    <TextView
+        android:id="@+id/text_view_fragment_description"
+        style="@style/TextViewFragmentStyleDescription"
+        android:layout_width="@dimen/text_view_fragment_width_description"
+        android:layout_height="@dimen/text_view_fragment_height_description"
+        app:layout_constraintBottom_toBottomOf="@id/image_view_fragment_icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/image_view_fragment_icon"
+        app:layout_constraintTop_toTopOf="@id/image_view_fragment_icon"
+        tools:text="@string/text_view_fragment_text" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view_fragment_comics"
+        style="@style/RecyclerViewFragmentStyle"
+        android:layout_width="@dimen/recycler_view_fragment_width"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="@dimen/recycler_view_fragment_margin_horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/image_view_fragment_icon" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

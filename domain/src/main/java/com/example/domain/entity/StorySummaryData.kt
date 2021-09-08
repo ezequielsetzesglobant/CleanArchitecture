@@ -6,4 +6,4 @@ data class StorySummaryData(
     val resourceURI: String = ConstantUtils.STRING_DEFAULT,
     val name: String = ConstantUtils.STRING_DEFAULT,
     val type: String = ConstantUtils.STRING_DEFAULT,
-)
+) : java.io.Serializable

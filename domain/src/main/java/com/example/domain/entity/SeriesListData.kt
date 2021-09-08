@@ -7,4 +7,4 @@ data class SeriesListData(
     val returned: Int = ConstantUtils.INT_DEFAULT,
     val collectionURI: String = ConstantUtils.STRING_DEFAULT,
     val items: List<SeriesSummaryData> = emptyList(),
-)
+) : java.io.Serializable

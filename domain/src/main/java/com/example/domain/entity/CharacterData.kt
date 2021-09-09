@@ -15,4 +15,4 @@ data class CharacterData(
     val stories: StoryListData = StoryListData(),
     val events: EventListData = EventListData(),
     val series: SeriesListData = SeriesListData(),
-)
+) : java.io.Serializable

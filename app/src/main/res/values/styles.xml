@@ -22,4 +22,35 @@
         <item name="android:gravity">center</item>
         <item name="android:layout_marginEnd">@dimen/text_view_item_recycler_view_margin_end</item>
     </style>
+
+    <style name="TextViewFragmentStyleTitle" parent="TextAppearance.AppCompat.Display1">
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">monospace</item>
+        <item name="android:textColor">@color/purple_500</item>
+        <item name="android:textSize">@dimen/text_view_fragment_text_size_title</item>
+        <item name="android:layout_marginTop">@dimen/text_view_fragment_margin_top_title</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="TextViewFragmentStyleDescription" parent="TextAppearance.AppCompat.Display1">
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">casual</item>
+        <item name="android:textColor">@color/blue</item>
+        <item name="android:textSize">@dimen/text_view_fragment_text_size_description</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingEnd">@dimen/text_view_fragment_padding_end_description</item>
+    </style>
+
+    <style name="RecyclerViewFragmentStyle" parent="TextAppearance.AppCompat.Display1">
+        <item name="android:layout_marginBottom">@dimen/recycler_view_fragment_margin_bottom</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="TextViewItemRecyclerViewFragmentStyle" parent="TextAppearance.AppCompat.Display1">
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">@dimen/text_view_item_recycler_view_fragment_size</item>
+        <item name="android:gravity">center</item>
+    </style>
 </resources>

@@ -15,8 +15,8 @@ import kotlinx.coroutines.withContext
 class CharacterViewModel(private val characterUseCase: CharacterUseCase) : ViewModel() {
 
     private var mutableCharactersState: MutableLiveData<Event<Data>> = MutableLiveData()
-    val liveDataState: LiveData<Event<Data>>
-        get() = mutableCharactersState
+
+    fun getLiveDataState(): LiveData<Event<Data>> = mutableCharactersState
 
     fun fetchCharacters() {
         viewModelScope.launch {
@@ -36,7 +36,6 @@ class CharacterViewModel(private val characterUseCase: CharacterUseCase) : ViewM
                 }
             }
         }
-
     }
 
     companion object {

@@ -7,4 +7,4 @@ data class EventListData(
     val returned: Int = ConstantUtils.INT_DEFAULT,
     val collectionURI: String = ConstantUtils.STRING_DEFAULT,
     val items: List<EventSummaryData> = emptyList(),
-)
+) : java.io.Serializable

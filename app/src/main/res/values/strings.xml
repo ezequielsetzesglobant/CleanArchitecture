@@ -3,4 +3,11 @@
     <string name="text_view_main_activity_title">Characters</string>
     <string name="text_item_recycler_view">Character name</string>
     <string name="text_view_character_name_item_recycler_view">%1$s</string>
+
+    <string name="text_view_fragment_text">Character information</string>
+    <string name="text_view_title_message_fragment">%1$s</string>
+    <string name="text_view_description_message_fragment">%1$s</string>
+    <string name="text_item_recycler_view_fragment">Comic name</string>
+    <string name="text_view_comic_name_item_recycler_view_fragment">%1$s</string>
+    <string name="text_view_default_description_message_fragment">No description found</string>
 </resources>

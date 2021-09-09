@@ -7,4 +7,4 @@ data class ComicListData(
     val returned: Int = ConstantUtils.INT_DEFAULT,
     val collectionURI: String = ConstantUtils.STRING_DEFAULT,
     val items: List<ComicSummaryData> = emptyList(),
-)
+) : java.io.Serializable

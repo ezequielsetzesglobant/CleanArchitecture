@@ -5,6 +5,8 @@
     <dimen name="recycler_view_main_activity_margin_top">10dp</dimen>
     <dimen name="recycler_view_main_activity_margin_horizontal">20dp</dimen>
     <dimen name="recycler_view_main_activity_margin_bottom">10dp</dimen>
+    <dimen name="floating_action_button_main_activity_margin_end">10dp</dimen>
+    <dimen name="floating_action_button_main_activity_margin_bottom">10dp</dimen>
 
     <dimen name="constraint_layout_item_recycler_view_margin_horizontal">5dp</dimen>
     <dimen name="constraint_layout_item_recycler_view_margin_top">5dp</dimen>

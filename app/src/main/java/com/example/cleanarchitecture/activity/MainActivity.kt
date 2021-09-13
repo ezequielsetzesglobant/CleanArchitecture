@@ -31,6 +31,8 @@ class MainActivity : AppCompatActivity(), CharacterAdapter.OnCharacterListener {
         viewModel.fetchCharacters()
 
         initializeRecyclerView()
+
+        binding.floatingActionButtonMainActivityRefresh.setOnClickListener{ viewModel.fetchCharacters() }
     }
 
     private fun initializeRecyclerView() {

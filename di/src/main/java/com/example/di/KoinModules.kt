@@ -1,5 +1,6 @@
 package com.example.di
 
+import com.example.data.database.CharacterDataBase
 import com.example.data.repository.CharacterRepositoryImpl
 import com.example.domain.repository.CharacterRepository
 import com.example.domain.usecase.CharacterUseCase
@@ -11,5 +12,6 @@ val useCasesModule = module {
 }
 
 val repositoriesModule = module {
-    single<CharacterRepository> { CharacterRepositoryImpl() }
+    single { CharacterDataBase() }
+    single<CharacterRepository> { CharacterRepositoryImpl(get()) }
 }

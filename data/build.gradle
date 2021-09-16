@@ -56,4 +56,12 @@ dependencies {
     //Koin
     testImplementation "io.insert-koin:koin-test:2.0.1"
     implementation 'org.koin:koin-androidx-viewmodel:2.0.1'
+
+    //Mockito
+    testImplementation 'com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0'
+    testImplementation 'org.mockito:mockito-core:2.28.2'
+    testImplementation 'org.mockito:mockito-inline:2.21.0'
+
+    //Rule
+    testImplementation 'androidx.arch.core:core-testing:2.1.0'
 }

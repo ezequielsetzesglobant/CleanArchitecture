@@ -18,21 +18,19 @@ class CharacterViewModel(private val characterUseCase: CharacterUseCase) : ViewM
 
     fun getLiveDataState(): LiveData<Event<Data>> = mutableCharactersState
 
-    fun fetchCharacters() {
-        viewModelScope.launch {
-            mutableCharactersState.postValue(Event(Data(responseType = Status.LOADING)))
-            when (val result: Result<CharacterDataWrapperData> = withContext(Dispatchers.IO) { characterUseCase() }) {
-                is Result.Success -> {
-                    if (result.data.data.results.isNotEmpty()) {
-                        mutableCharactersState.postValue(Event(Data(responseType = Status.SUCCESSFUL, data = result.data)))
-                    } else {
-                        mutableCharactersState.postValue(Event(Data(responseType = Status.EMPTY_LIST, error = NO_CHARACTERS_MESSAGE)))
-                    }
+    fun fetchCharacters() = viewModelScope.launch {
+        mutableCharactersState.postValue(Event(Data(responseType = Status.LOADING)))
+        when (val result: Result<CharacterDataWrapperData> = withContext(Dispatchers.IO) { characterUseCase() }) {
+            is Result.Success -> {
+                if (result.data.data.results.isNotEmpty()) {
+                    mutableCharactersState.postValue(Event(Data(responseType = Status.SUCCESSFUL, data = result.data)))
+                } else {
+                    mutableCharactersState.postValue(Event(Data(responseType = Status.EMPTY_LIST, error = NO_CHARACTERS_MESSAGE)))
                 }
-                is Result.Failure -> {
-                    result.exception.message?.let {
-                        mutableCharactersState.postValue(Event(Data(responseType = Status.ERROR, error = it)))
-                    }
+            }
+            is Result.Failure -> {
+                result.exception.message?.let {
+                    mutableCharactersState.postValue(Event(Data(responseType = Status.ERROR, error = it)))
                 }
             }
         }
